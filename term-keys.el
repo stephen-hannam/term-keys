@@ -106,7 +106,7 @@ file."
     ["k"		"k"		37	"K"		?k	"K"		"K"		"K"		"K"		nil	?K	#x000B	]
     ["l"		"l"		38	"L"		?l	"L"		"L"		"L"		"L"		nil	?L	#x000C	]
     [";"		"semicolon"	39	";"		?\;	":"		"colon"		"SEMICOLON"	"Semicolon"	":"	?:	nil	]
-    ["'"		"apostrophe"	40	"'"		?'	"\""		"quotedbl"	"APOSTROPHE"	"Apostrophe"	"\""	?\"	nil	]
+    ["'"		"apostrophe"	40	"'"		?'	"\""		"quotedbl"	"APOSTROPHE"	"Apostrophe"	"\""	nil	nil	]
     [nil		"Shift_L"	42	"Shift"		nil	nil		nil		"LEFT_SHIFT"	"LShift"	nil	nil	nil	]
     ["\\"		"backslash"	43	"\\"		?\\	"|"		"bar"		"BACKSLASH"	"Backslash"	"|"	?|	#x001C	]
     ["z"		"z"		44	"Z"		?z	"Z"		"Z"		"Z"		"Z"		nil	?Z	#x001A	]
@@ -141,6 +141,16 @@ file."
     ["<prior>"		"Prior"		104	"PgUp"		#xF72C	nil		nil		"PAGE_UP"	"PageUp"	nil	nil	nil	]
     ["<next>"		"Next"		109	"PgDown"	#xF72D	nil		nil		"PAGE_DOWN"	"PageDown"	nil	nil	nil	]
 
+    ["<kp-1>"	"KP_1"  79	nil	    nil	    "<end>"	        "END"       "KP_1"	    nil	        nil nil nil	]
+    ["<kp-2>"	"KP_2"  80	nil	    nil	    "<down>"        "DOWN"      "KP_2"	    nil	        nil nil nil	]
+    ["<kp-3>"	"KP_3"  81	nil	    nil	    "<next>"        "PAGE_DOWN" "KP_3"	    nil	        nil nil nil	]
+    ["<kp-4>"	"KP_4"  75	nil	    nil	    "<left>"        "LEFT"      "KP_4"	    nil	        nil nil nil	]
+    ["<kp-5>"	"KP_5"  76	nil	    nil	    "<kp-5>"        "KP_5"      "KP_5"	    nil	        nil nil nil	]
+    ["<kp-6>"	"KP_6"  77	nil	    nil	    "<right>"       "RIGHT"     "KP_6"	    nil	        nil nil nil	]
+    ["<kp-7>"	"KP_7"  71	nil	    nil	    "<home>"        "HOME"      "KP_7"	    nil	        nil nil nil	]
+    ["<kp-8>"	"KP_8"  72	nil	    nil	    "<up>"	        "UP"        "KP_8"	    nil	        nil nil nil	]
+    ["<kp-9>"	"KP_9"  73	nil	    nil	    "<prior>"       "PAGE_UP"   "KP_9"	    nil	        nil nil nil	]
+    ["<kp-0>"	"KP_0"  82	nil	    nil	    "<insert>"      "INSERT"    "KP_0"	    nil	        nil nil nil	]
     ;; Add new entries at the end of the list, to avoid disrupting
     ;; existing configurations.
 
@@ -322,6 +332,9 @@ instead."
 
       ;; S-PgUp/PgDn - usually used for scrolling the terminal, which is not useful in Emacs
       (and (member key '("Prior" "Next")) shift)
+
+      ;; KeyPad keys unmodified -- TODO: add for modified by Shift
+      (and (member key '("KP_0" "KP_1" "KP_2" "KP_3" "KP_4" "KP_5" "KP_6" "KP_7" "KP_8" "KP_9")))
 
       ;; C-S-x is unrepresentable for letters
       (and (string-match-p "^[a-z]$" key) control shift)
