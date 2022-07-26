@@ -330,8 +330,8 @@ instead."
       ;; Navigation keys and Control/Alt
       (and (member key '("Up" "Down" "Left" "Right" "Home" "End" "Prior" "Next")) (or meta (and control shift)))
 
-      ;; S-PgUp/PgDn - usually used for scrolling the terminal, which is not useful in Emacs
-      (and (member key '("Prior" "Next")) shift)
+      ;; ?-PgUp/PgDn - usually used for scrolling the terminal, which is not useful in Emacs
+      (and (member key '("Prior" "Next")))
 
       ;; KeyPad keys unmodified -- TODO: add for modified by Shift
       (and (member key '("KP_0" "KP_1" "KP_2" "KP_3" "KP_4" "KP_5" "KP_6" "KP_7" "KP_8" "KP_9")))
